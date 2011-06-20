@@ -3537,8 +3537,8 @@ class Reports_Controller extends Authenticated_Controller
 			$l['w_page'] = $this->translate->_('Page');
 		}
 
-		if (isset($l['w_op5'])) { # use ninja translation
-			$l['w_op5'] = $this->translate->_('This report is produced by op5 Monitor.');
+		if (isset($l['w_op5'])) {
+			$l['w_op5'] = $this->translate->_('This report was produced by op5 Monitor on %s', date(nagstat::date_format()));
 		}
 
 		$type = $this->type;
