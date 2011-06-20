@@ -39,8 +39,8 @@ foreach ($object_data as $obj => $data) {
 				<?php if ($create_pdf === false) { ?>title="<?php echo
 					sprintf(
 						$title_str,
-							date('Y-m-d H:i', $event['the_time']),
-							date('Y-m-d H:i', ($event['the_time'] + $event['duration'])),
+							date($date_format_str, $event['the_time']),
+							date($date_format_str, ($event['the_time'] + $event['duration'])),
 							time::to_string($event['duration']),
 							$event['output'] ); ?>"
 					<?php }

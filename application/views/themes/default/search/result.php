@@ -232,7 +232,7 @@ if (isset($service_result) ) {
 				}
 			?>
 		</td>
-		<td><?php echo $service->last_check ? date('Y-m-d H:i:s',$service->last_check) : $label_na ?></td>
+		<td><?php echo $service->last_check ? date($date_format_str,$service->last_check) : $label_na ?></td>
 		<td><?php echo $service->output ?></td>
 	<?php if ($show_display_name) { ?>
 		<td><?php echo $service->display_name ?></td>
@@ -361,7 +361,7 @@ if (isset($comment_result)) {
 		<tr class="<?php echo ($i%2 == 0) ? 'even' : 'odd' ?>">
 			<td><?php echo html::anchor('extinfo/details/host/'.$row->host_name, $row->host_name) ?></td>
 			<td><?php echo !empty($row->service_description) ? html::anchor('extinfo/details/service/'.$row->host_name.'?service='.urlencode($row->service_description), $row->service_description) : '' ?></td>
-			<td style="white-space: normal"><?php echo !empty($row->entry_time) ? date(nagstat::date_format(), $row->entry_time) : '' ?></td>
+			<td style="white-space: normal"><?php echo !empty($row->entry_time) ? date($date_format_str, $row->entry_time) : '' ?></td>
 			<td style="white-space: normal"><?php echo $row->author_name ?></td>
 			<td style="white-space: normal"><?php echo $row->comment_data ?></td>
 			<td style="white-space: normal"><?php echo $row->comment_id ?></td>
@@ -373,7 +373,7 @@ if (isset($comment_result)) {
 			}
 			?></td>
 			<td style="white-space: normal"><?php echo $entry_type ?></td>
-			<td style="white-space: normal"><?php echo $row->expires ? date(nagstat::date_format(), $row->expire_time) : $na_str ?></td>
+			<td style="white-space: normal"><?php echo $row->expires ? date($date_format_str, $row->expire_time) : $na_str ?></td>
 		</tr>
 	<?php $i++;	} ?>
 	</table>

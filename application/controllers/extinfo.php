@@ -229,7 +229,7 @@ class Extinfo_Controller extends Authenticated_Controller {
 		$content->lable_type = $type == 'host' ? $t->_('Host') : $t->_('Service');
 		$content->type = $type;
 		$content->back_link = $back_link;
-		$content->date_format_str = 'Y-m-d H:i:s';
+		$content->date_format_str = nagstat::date_format();
 		$content->host_link = $host_link;
 		$content->lable_member_of = $t->_('Member of');
 		$content->lable_for = $t->_('for');
@@ -638,6 +638,7 @@ class Extinfo_Controller extends Authenticated_Controller {
 		$content->lable_performance_data = $t->_('Performance Data Being Processed?');
 
 		$date_format_str = nagstat::date_format();
+		$content->date_format_str = $date_format_str;
 
 		# fetch program status from program_status_model
 		# uses ORM
@@ -1459,6 +1460,7 @@ class Extinfo_Controller extends Authenticated_Controller {
 		$this->template->content->back_link = $back_link;
 		$this->template->content->header_links = $header_links;
 		$this->template->content->pagination = isset($pagination) ? $pagination : false;
+		$this->template->content->date_format_str = nagstat::date_format();
 	}
 
 	/**

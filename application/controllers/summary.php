@@ -508,7 +508,7 @@ class Summary_Controller extends Authenticated_Controller
 
 	public function _print_duration($start_time, $end_time)
 	{
-		$fmt = "Y-m-d H:i:s";
+		$fmt = nagstat::date_format();
 		echo date($fmt, $start_time) . " to " .
 			date($fmt, $end_time) . "<br />\n";
 		$duration = $end_time - $start_time;

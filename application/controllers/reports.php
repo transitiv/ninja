@@ -964,7 +964,7 @@ class Reports_Controller extends Authenticated_Controller
 					$report_options[$key] = $value;
 				if (arr::search($_REQUEST, 'report_period') == 'custom' && ($key=='start_time' || $key=='end_time')) {
 					if (is_numeric($value)) {
-						$_REQUEST[$key] = date("Y-m-d H:i", $value);
+						$_REQUEST[$key] = date(nagstat::date_format(), $value);
 					}
 				}
 
@@ -1815,6 +1815,7 @@ class Reports_Controller extends Authenticated_Controller
 						$template->trends_graph->start = $report_start;
 						$template->trends_graph->end = $report_end;
 						$template->trends_graph->report_period = $report_period;
+						$template->trends_graph->date_format_str = nagstat::date_format();
 						$template->trends_graph->resolution_names = $resolution_names;
 						$template->trends_graph->length = ($report_end - $report_start);
 						$template->trends_graph->sub_type = $sub_type;
@@ -1884,6 +1885,7 @@ class Reports_Controller extends Authenticated_Controller
 							$log_template->source = $data['source'];
 							$log_template->create_pdf = $this->create_pdf;
 							$log_template->report_time_formatted = $report_time_formatted;
+							$log_template->date_format_str = nagstat::date_format();
 							if ($this->create_pdf) {
 								$this->pdf_data['log_data'] = $log_template->render();
 							}
@@ -4426,7 +4428,7 @@ class Reports_Controller extends Authenticated_Controller
 
 	public function _print_duration($start_time, $end_time)
 	{
-		$fmt = "Y-m-d H:i:s";
+		$fmt = nagstat::date_format();
 		echo date($fmt, $start_time) . " to " .
 			date($fmt, $end_time) . "<br />\n";
 		$duration = $end_time - $start_time;

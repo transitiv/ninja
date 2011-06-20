@@ -121,6 +121,7 @@ class Notifications_Controller extends Authenticated_Controller {
 		$this->template->content->pagination = isset($pagination) ? $pagination : false;
 		$this->template->content->select_strings = $this->select_strings;
 		$this->template->content->selected_val = $type;
+		$this->template->content->date_format_str = nagstat::date_format();
 	}
 
 	public function host($host_name = false, $service = false, $sort_field='start_time', $sort_order='DESC', $query_type = nagstat::FIND_HOST)
