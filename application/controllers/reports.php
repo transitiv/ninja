@@ -3551,7 +3551,7 @@ class Reports_Controller extends Authenticated_Controller
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
 		$pdf->SetAuthor('Ninja4Nagios');
-		$pdf->SetTitle($this->translate->_('Ninja PDF Report'));
+		$pdf->SetTitle($title);
 		$pdf->SetSubject($title);
 		$pdf->SetKeywords('Ninja, '.Kohana::config('config.product_name').', PDF, report, '.$type);
 
