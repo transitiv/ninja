@@ -41,7 +41,7 @@ class Change_Password_Controller extends Authenticated_Controller {
 		elseif ($new_password == $new_password2)
 		{
 			$user = Auth::instance()->get_user();
-			if ($user->password == ninja_auth::hash_password($current_password))
+			if (ninja_auth::valid_password($current_password, $user->password, $user->password_algo))
 			{
 				$user->password = User_Model::update_password($user->username, $new_password);
 				User_Model::save_user($user);
