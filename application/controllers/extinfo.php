@@ -200,12 +200,7 @@ class Extinfo_Controller extends Authenticated_Controller {
 
 		if (Kohana::config('config.pnp4nagios_path') !== false && pnp::has_graph($host, urlencode($service))) {
 			$label = $t->_('Show performance graph');
-			$url = url::site() . 'pnp/?host=' . urlencode($host);
-			if ($type ===  'service') {
-				$url .= '&srv=' . urlencode($service);
-			} else {
-				$url .= '&srv=_HOST_';
-			}
+			$url = url::site() . pnp::controller_path($host, $service);
 			$xaction[$label] = array
 				('url' => $url,
 				 'img' => url::base(false) . $this->img_path('icons/16x16/pnp.png'),

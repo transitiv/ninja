@@ -110,4 +110,23 @@ class pnp_Core
 		}
 		return $base . "/graph?host=$host&srv=$service";
 	}
+
+	/**
+	 * Generates a pnp controller path for a given host or service
+	 *
+	 * @param $host The host
+	 * @param $service The service
+	 * @return A pnp controller path to get the desired pnp page
+	 */
+	public static function controller_path($host, $service=false)
+	{
+		$host = urlencode(pnp::clean($host));
+
+		if ($service !== false) {
+			$service = urlencode(pnp::clean($service));
+		} else {
+			$service = '_HOST_';
+		}
+		return 'pnp/?host='.$host.'&srv='.$service;
+	}
 }
